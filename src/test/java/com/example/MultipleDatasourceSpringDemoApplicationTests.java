@@ -1,7 +1,7 @@
 package com.example;
 
-import com.example.model.order.Order;
-import com.example.model.user.User;
+import com.example.model.order.Orders;
+import com.example.model.user.Users;
 import com.example.repositories.order.OrderRepository;
 import com.example.repositories.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,20 +15,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class MultipleDatasourceSpringDemoApplicationTests {
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private OrderRepository orderRepository;
 
-    User user;
-    Order order;
+    Users user;
+    Orders order;
 
     @BeforeEach
     public void setup() {
-        user = new User();
-        order = new Order();
+        user = new Users();
+        order = new Orders();
 
         user.setEmail("johndoe@gmail.com");
         user.setFirstName("John");
@@ -40,25 +38,16 @@ class MultipleDatasourceSpringDemoApplicationTests {
     }
 
     @Test
-    void contextLoads() {
-    }
-
-
-    @Test
     void saveUserDataInDB() {
-
-        User savedUser = userRepository.save(user);
-        Optional<User> userData = userRepository.findById(savedUser.getId());
+        Users savedUser = userRepository.save(user);
+        Optional<Users> userData = userRepository.findById(savedUser.getId());
         assertTrue(userData.isPresent());
-
     }
 
     @Test
     void saveOrderDataInDB() {
-
-        Order savedOrder = orderRepository.save(order);
-        Optional<Order> orderData = orderRepository.findById(savedOrder.getId());
+        Orders savedOrder = orderRepository.save(order);
+        Optional<Orders> orderData = orderRepository.findById(savedOrder.getId());
         assertTrue(orderData.isPresent());
     }
-
 }
