@@ -1,13 +1,13 @@
 package com.example.model.order;
 
-import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "orders")
-public class Orders {
+@Table(name = "orders", schema = "orders")
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

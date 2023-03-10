@@ -2,12 +2,12 @@ package com.example.model.user;
 
 import lombok.Data;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "users")
-public class Users {
+@Table(name = "user", schema = "user")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
